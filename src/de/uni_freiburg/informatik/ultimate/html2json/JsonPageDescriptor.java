@@ -13,6 +13,11 @@ import java.util.Map.Entry;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/**
+ * 
+ * @author Daniel Dietsch (dietsch@informatik.uni-freiburg.de)
+ *
+ */
 public class JsonPageDescriptor {
 
 	private String mTitle;
@@ -78,6 +83,7 @@ public class JsonPageDescriptor {
 	public void writeToFile(String path) throws IOException {
 		File baseDir = new File(path);
 		File actualFile = new File(baseDir, convertToId(mTitle) + ".json");
+		actualFile.getParentFile().mkdirs();
 
 		Writer out = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream(actualFile), "UTF-8"));

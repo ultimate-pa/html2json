@@ -12,6 +12,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+/**
+ * 
+ * @author Daniel Dietsch (dietsch@informatik.uni-freiburg.de)
+ *
+ */
 public class Program {
 
 	/**
@@ -58,8 +63,6 @@ public class Program {
 			System.exit(-3);
 		}
 
-//		TestJSoup(doc);
-		
 		try {
 			obj.writeToFile(basedir);
 		} catch (IOException ex) {
@@ -129,27 +132,6 @@ public class Program {
 				sectionTitle2sectionContent, interfaceDescription);
 	}
 
-//	private static void TestJSoup(Document doc) throws IOException {
-//		Element topId = doc.select("* > h1").first();
-//		Elements topContent = doc.select(buildTopContentSelector(topId));
-//		System.out.println(topId.text());
-//		System.out.println(topContent);
-//		System.out.println();
-//
-//		Elements sectionTitles = doc.select("* > h2");
-//		for (int i = 0; i < sectionTitles.size(); i++) {
-//			Element current = sectionTitles.get(i);
-//			Element next = i + 1 < sectionTitles.size() ? sectionTitles
-//					.get(i + 1) : null;
-//
-//			System.out.println(current.text());
-//			Elements sectionContent = doc.select(buildSectionSelector(current,
-//					next));
-//			System.out.println(sectionContent);
-//			System.out.println();
-//		}
-//	}
-
 	private static String buildTopContentSelector(Element topElement) {
 		return "h1 ~ *:not(h2 ~ *,h2)";
 	}
@@ -163,5 +145,4 @@ public class Program {
 			return "h2:contains(" + current.text() + ") ~ *";
 		}
 	}
-
 }
